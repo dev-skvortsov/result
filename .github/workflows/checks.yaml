@@ -1,0 +1,62 @@
+name: Checks
+
+on: [push]
+
+jobs:
+  psalm:
+    name: Psalm
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install PHP8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Composer
+        uses: php-actions/composer@v6
+      - name: Run Psalm
+        run: ./vendor/bin/psalm --show-info=false --no-cache
+  php-cs-fixer:
+    name: PHP CS Fixer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install PHP8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Composer
+        uses: php-actions/composer@v6
+      - name: Run PHP CS Fixer
+        run: ./vendor/bin/php-cs-fixer fix src --dry-run --using-cache=no --allow-risky=yes
+  unit-tests:
+    name: PHPUnit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install PHP8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Composer
+        uses: php-actions/composer@v6
+      - name: Run PHPUnit
+        run: ./vendor/bin/phpunit --do-not-cache-result
+  infection:
+    name: Infection Mutate testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install PHP8.2
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: xdebug2
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Composer
+        uses: php-actions/composer@v6
+      - name: Run Infection
+        run: ./vendor/bin/infection --threads=max --show-mutations --only-covered --min-covered-msi=100

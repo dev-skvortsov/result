@@ -10,8 +10,6 @@ use Skd\Result\Error\Error;
 
 /**
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(Error::class)]
 class ErrorTest extends TestCase

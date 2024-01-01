@@ -14,8 +14,6 @@ use Skd\Result\Result;
 
 /**
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(Result::class)]
 class ResultTest extends TestCase

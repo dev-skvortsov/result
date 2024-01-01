@@ -11,8 +11,6 @@ use Skd\Result\Error\Notification;
 
 /**
  * @internal
- *
- * @coversNothing
  */
 #[CoversClass(Notification::class)]
 class NotificationTest extends TestCase

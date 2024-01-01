@@ -12,6 +12,11 @@ use Skd\Result\Exception\ResultException;
 use Skd\Result\Ok;
 use Skd\Result\Result;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 #[CoversClass(Result::class)]
 class ResultTest extends TestCase
 {

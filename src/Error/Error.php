@@ -9,12 +9,12 @@ namespace Skd\Result\Error;
  *
  * @author Dmitrii Skvortsov <dev.skvortsov@gmail.com>
  */
-final readonly class Error
+final class Error
 {
     public function __construct(
-        public string $field,
-        public string $errorMessage,
-        public array $extra = [],
+        public readonly string $field,
+        public readonly string $errorMessage,
+        public readonly array $extra = [],
     ) {}
 
     public function isEqual(Error $error): bool

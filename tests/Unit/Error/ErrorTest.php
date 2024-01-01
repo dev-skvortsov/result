@@ -8,6 +8,11 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Skd\Result\Error\Error;
 
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 #[CoversClass(Error::class)]
 class ErrorTest extends TestCase
 {

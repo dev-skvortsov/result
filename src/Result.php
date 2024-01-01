@@ -16,14 +16,14 @@ use Skd\Result\Exception\ResultException;
  *
  * @template T
  */
-final readonly class Result
+final class Result
 {
     /**
      * @param T $value
      */
     private function __construct(
-        private mixed $value = null,
-        private ?Notification $errors = null,
+        private readonly mixed $value = null,
+        private readonly ?Notification $errors = null,
     ) {}
 
     /**

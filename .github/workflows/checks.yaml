@@ -6,11 +6,14 @@ jobs:
   psalm:
     name: Psalm
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.1', '8.2', '8.3']
     steps:
-      - name: Install PHP8.2
+      - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: ${{ matrix.php }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Composer
@@ -20,11 +23,14 @@ jobs:
   php-cs-fixer:
     name: PHP CS Fixer
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.1', '8.2', '8.3']
     steps:
-      - name: Install PHP8.2
+      - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: ${{ matrix.php }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Composer
@@ -34,11 +40,14 @@ jobs:
   unit-tests:
     name: PHPUnit
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.1', '8.2', '8.3']
     steps:
-      - name: Install PHP8.2
+      - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: ${{ matrix.php }}
       - name: Checkout
         uses: actions/checkout@v3
       - name: Composer
@@ -48,12 +57,15 @@ jobs:
   infection:
     name: Infection Mutate testing
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.1', '8.2', '8.3']
     needs: unit-tests
     steps:
-      - name: Install PHP8.2
+      - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: ${{ matrix.php }}
           coverage: xdebug2
       - name: Checkout
         uses: actions/checkout@v3

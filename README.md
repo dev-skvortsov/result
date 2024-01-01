@@ -188,6 +188,7 @@ final class SomeErrorsFactory
     return new Error('code', 'Error message');
   }
 }
+```
 
 #### Unit tests
 ```php

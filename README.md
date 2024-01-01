@@ -147,9 +147,9 @@ use Skd\Result\Error\Error;
 use Skd\Result\Error\Notification;
 use Skd\Result\Result;
 
-readonly class SomeClass
+class SomeClass
 {
-    private function __construct(public mixed $someField)
+    private function __construct(public readonly mixed $someField)
     {
     }
 

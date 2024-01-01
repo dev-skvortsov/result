@@ -9,7 +9,11 @@ use PHPUnit\Framework\TestCase;
 use Skd\Result\Error\Error;
 use Skd\Result\Error\Notification;
 
-
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
 #[CoversClass(Notification::class)]
 class NotificationTest extends TestCase
 {
